@@ -5,7 +5,9 @@ import 'timer.dart';
 
 void main() {
   runApp(
-    const ProviderScope(child: MyApp()),
+    ProviderScope(
+      child: MyApp(),
+    ),
   );
 }
 
