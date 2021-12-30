@@ -52,12 +52,12 @@ final timeLeftProvider = Provider<String>((ref) {
   return ref.watch(_timeLeftProvider);
 });
 
-class TimerTextWidget extends HookWidget {
+class TimerTextWidget extends HookConsumerWidget {
   const TimerTextWidget({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    final timeLeft = useProvider(timeLeftProvider);
+  Widget build(BuildContext context, WidgetRef ref) {
+    final timeLeft = ref.watch(timeLeftProvider);
     print('building TimerTextWidget $timeLeft');
     return Text(
       timeLeft,
@@ -74,13 +74,13 @@ final buttonProvider = Provider<ButtonState>((ref) {
   return ref.watch(_buttonState);
 });
 
-class ButtonsContainer extends HookWidget {
+class ButtonsContainer extends HookConsumerWidget {
   const ButtonsContainer({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     print('building ButtonsContainer');
-    final state = useProvider(buttonProvider);
+    final state = ref.watch(buttonProvider);
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -105,39 +105,39 @@ class ButtonsContainer extends HookWidget {
   }
 }
 
-class StartButton extends StatelessWidget {
+class StartButton extends ConsumerWidget {
   const StartButton({Key? key}) : super(key: key);
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return FloatingActionButton(
       onPressed: () {
-        context.read(timerProvider.notifier).start();
+        ref.read(timerProvider.notifier).start();
       },
       child: Icon(Icons.play_arrow),
     );
   }
 }
 
-class PauseButton extends StatelessWidget {
+class PauseButton extends ConsumerWidget {
   const PauseButton({Key? key}) : super(key: key);
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return FloatingActionButton(
       onPressed: () {
-        context.read(timerProvider.notifier).pause();
+        ref.read(timerProvider.notifier).pause();
       },
       child: Icon(Icons.pause),
     );
   }
 }
 
-class ResetButton extends StatelessWidget {
+class ResetButton extends ConsumerWidget {
   const ResetButton({Key? key}) : super(key: key);
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return FloatingActionButton(
       onPressed: () {
-        context.read(timerProvider.notifier).reset();
+        ref.read(timerProvider.notifier).reset();
       },
       child: Icon(Icons.replay),
     );
