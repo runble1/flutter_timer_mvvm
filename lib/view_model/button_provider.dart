@@ -10,4 +10,3 @@ final _buttonState = Provider<ButtonState>((ref) {
 final buttonProvider = Provider<ButtonState>((ref) {
   return ref.watch(_buttonState);
 });
-
