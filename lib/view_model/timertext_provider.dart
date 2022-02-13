@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../model/timer.dart';
+import '../model/button_state.dart';
 
 final timerProvider = StateNotifierProvider<TimerNotifier, TimerModel>(
   (ref) => TimerNotifier(),
@@ -13,14 +14,6 @@ final _timeLeftProvider = Provider<String>((ref) {
 
 final timeLeftProvider = Provider<String>((ref) {
   return ref.watch(_timeLeftProvider);
-});
-
-final _buttonState = Provider<ButtonState>((ref) {
-  return ref.watch(timerProvider).buttonState;
-});
-
-final buttonProvider = Provider<ButtonState>((ref) {
-  return ref.watch(_buttonState);
 });
 
 class TimerNotifier extends StateNotifier<TimerModel> {
