@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../view_model/button_provider.dart';
-import '../view_model/timer_provider.dart';
+import '../view_model/timertext_provider.dart';
 import '../model/button_state.dart';
 
 class ButtonsContainer extends HookConsumerWidget {
