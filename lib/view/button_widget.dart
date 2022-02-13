@@ -3,7 +3,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../view_model/button_provider.dart';
 import '../view_model/timertext_provider.dart';
-import '../model/button_state.dart';
 
 class ButtonsContainer extends HookConsumerWidget {
   const ButtonsContainer({Key? key}) : super(key: key);
@@ -11,28 +10,12 @@ class ButtonsContainer extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(buttonProvider);
+    print('building TimerTextWidget $state');
 
     print('building ButtonsContainer');
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        if (state == ButtonState.initial) ...[
-          StartButton(),
-        ],
-        if (state == ButtonState.started) ...[
-          PauseButton(),
-          SizedBox(width: 20),
-          ResetButton(),
-        ],
-        if (state == ButtonState.paused) ...[
-          StartButton(),
-          SizedBox(width: 20),
-          ResetButton(),
-        ],
-        if (state == ButtonState.finished) ...[
-          ResetButton(),
-        ],
-      ],
+      children: state.ButtonIconWidget,
     );
   }
 }

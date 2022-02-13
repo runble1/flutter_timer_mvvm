@@ -1,8 +1,9 @@
 import 'dart:async';
+import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../view/button_widget.dart';
 import '../model/timer.dart';
-import '../model/button_state.dart';
 
 final timerProvider = StateNotifierProvider<TimerNotifier, TimerModel>(
   (ref) => TimerNotifier(),
@@ -76,5 +77,23 @@ class TimerNotifier extends StateNotifier<TimerModel> {
   void dispose() {
     _tickerSubscription?.cancel();
     super.dispose();
+  }
+}
+
+// Modelに書くべき？
+extension ButtonStateExt on ButtonState {
+  List<Widget> get ButtonIconWidget {
+    switch (this) {
+      case ButtonState.initial:
+        return [StartButton()];
+      case ButtonState.started:
+        //return StartButton();
+        return [PauseButton(),SizedBox(width: 20),ResetButton(),];
+      case ButtonState.paused:
+        //return StartButton();
+        return [StartButton(),SizedBox(width: 20),ResetButton(),];
+      case ButtonState.finished:
+        return [ResetButton()];
+    }
   }
 }
