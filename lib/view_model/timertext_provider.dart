@@ -87,10 +87,8 @@ extension ButtonStateExt on ButtonState {
       case ButtonState.initial:
         return [StartButton()];
       case ButtonState.started:
-        //return StartButton();
         return [PauseButton(),SizedBox(width: 20),ResetButton(),];
       case ButtonState.paused:
-        //return StartButton();
         return [StartButton(),SizedBox(width: 20),ResetButton(),];
       case ButtonState.finished:
         return [ResetButton()];

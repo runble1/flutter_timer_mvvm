@@ -10,7 +10,6 @@ class ButtonsContainer extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(buttonProvider);
-    print('building TimerTextWidget $state');
 
     print('building ButtonsContainer');
     return Row(

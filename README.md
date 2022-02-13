@@ -1,5 +1,5 @@
-# my_timer_app
+# Riverpod Timer MVVM
 
 This is a demo of Riverpod for Flutter as described in the following tutorial:
 
-- [Flutter Riverpod tutorial: Timer app](https://medium.com/@suragch/flutter-riverpod-tutorial-timer-app-186d04637775)
+- [Flutter Riverpod MVVM tutorial: Timer app](https://runble1.com/flutter-hooks-riverpod-statenotifier-timer/)
